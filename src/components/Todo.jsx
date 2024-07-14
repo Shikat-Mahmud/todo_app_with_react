@@ -36,11 +36,9 @@ export const Todo = () => {
         <section className="todo-container">
             <header>
                 <h1>Todo List</h1>
-                <TodoTime/>
+                <TodoTime />
             </header>
-
             <TodoForm onAddToDo={handleFormSubmit} />
-
             <section className="myUnOrdList">
                 <ul>
                     {
@@ -56,7 +54,6 @@ export const Todo = () => {
                     }
                 </ul>
             </section>
-
             {task.length > 0 && (
                 <TodoClearAll onHandleClearAll={handleClearAll} />
             )}
