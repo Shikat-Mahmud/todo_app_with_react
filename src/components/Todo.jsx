@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoTime } from "./TodoTime";
+import { TodoClearAll } from "./TodoClearAll";
 
 
 export const Todo = () => {
@@ -31,8 +32,6 @@ export const Todo = () => {
         setTask([]);
     }
 
-    
-
     return (
         <section className="todo-container">
             <header>
@@ -59,15 +58,7 @@ export const Todo = () => {
             </section>
 
             {task.length > 0 && (
-                <section className="clear-btn">
-                    <button
-                        type="button"
-                        style={{ background: "none", color: "#fff" }}
-                        onClick={handleClearAll}
-                    >
-                        Clear All
-                    </button>
-                </section>
+                <TodoClearAll onHandleClearAll={handleClearAll} />
             )}
         </section>
     );
