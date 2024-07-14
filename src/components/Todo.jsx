@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
 import { MdCheck, MdDeleteForever, MdOutlineDateRange } from "react-icons/md";
 
@@ -84,7 +85,7 @@ export const Todo = () => {
                     {
                         task.map((curTask, index) => {
                             return <li key={index} className="todo-item">
-                                <span>{curTask}</span>
+                                <span><BsArrowUpRightCircleFill /> {curTask}</span>
                                 <button className="check-btn">
                                     <MdCheck />
                                 </button>

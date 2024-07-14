@@ -73,6 +73,7 @@
     width: 100%;
     background-color: #f2f3f4;
     color: var(--primary-color);
+    padding-left: 1rem;
   }
   
   form input:hover {
@@ -109,6 +110,10 @@
   
   span {
     margin-right: 3.2rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
   .myUnOrdList {
