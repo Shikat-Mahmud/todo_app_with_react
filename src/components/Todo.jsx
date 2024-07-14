@@ -5,7 +5,7 @@ export const Todo = () => {
                 <h1>Todo List</h1>
             </header>
             <section className="form">
-                <form action="">
+                <form>
                     <div>
                         <input type="text" className="todo-input" autoComplete="off"/>
                     </div>
