@@ -2,33 +2,22 @@ import { useEffect, useState } from "react";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
 import { MdCheck, MdDeleteForever, MdOutlineDateRange } from "react-icons/md";
+import { TodoForm } from "./TodoForm";
 
 
 export const Todo = () => {
-    const [inputValue, setInputValue] = useState("");
     const [task, setTask] = useState([]);
 
-    const handleInputChange = (value) => {
-        setInputValue(value);
-    };
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    const handleFormSubmit = (inputValue) => {
 
         // do not add null value
         if (!inputValue) return;
 
         // do not add duplicate value
-        if (task.includes(inputValue)) {
-            setInputValue(""); //clear input
-            return;
-        }
+        if (task.includes(inputValue)) return;
 
         // add values to the array
         setTask((newTask) => [...newTask, inputValue]);
-
-        // clear input after adding a task
-        setInputValue("");
     };
 
 
@@ -42,7 +31,6 @@ export const Todo = () => {
     const handleClearAll = () => {
         setTask([]);
     }
-
 
     // todo date and time
     // const [dateTime, setDateTime] = useState("");
@@ -73,26 +61,8 @@ export const Todo = () => {
                     <h2 style={{ display: "flex", alignItems: "center", gap: "5px" }}><IoMdTime /> {time}</h2>
                 </div>
             </header>
-            <section className="form">
-                <form onSubmit={handleFormSubmit}>
-                    <div>
-                        <input
-                            style={{ color: "#000" }}
-                            type="text"
-                            className="todo-input"
-                            autoComplete="off"
-                            placeholder="Task Name"
-                            value={inputValue}
-                            onChange={(event) => handleInputChange(event.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <button type="submit" className="todo-btn">
-                            Add Task
-                        </button>
-                    </div>
-                </form>
-            </section>
+
+            <TodoForm onAddToDo={handleFormSubmit}/>
 
             <section className="myUnOrdList">
                 <ul>
