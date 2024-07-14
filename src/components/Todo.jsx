@@ -65,8 +65,8 @@ export const Todo = () => {
                                 <button className="check-btn">
                                     <MdCheck />
                                 </button>
-                                <button>
-                                    <MdDeleteForever className="delete-btn"/>
+                                <button className="delete-btn">
+                                    <MdDeleteForever />
                                 </button>
                             </li>
                         })
