@@ -55,7 +55,7 @@ export const Todo = () => {
         <section className="todo-container">
             <header>
                 <h1>Todo List</h1>
-                <div style={{display: "flex",alignItems: "center", justifyContent: "center", gap: "20px", backgroundColor: "#fff", padding: "6px", borderRadius: "8px", color: "#000"}}>
+                <div style={{display: "flex",alignItems: "center", justifyContent: "center", gap: "20px", backgroundColor: "#fff", padding: "6px 20px", borderRadius: "8px", color: "#000"}}>
                     <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><MdOutlineDateRange /> {date}</h2>
                     <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><IoMdTime /> {time}</h2>
                 </div>
@@ -67,7 +67,8 @@ export const Todo = () => {
                             style={{ color: "#000" }}
                             type="text"
                             className="todo-input"
-                            autoComplete="off"
+                            autoComplete="off" 
+                            placeholder="Task Name"
                             value={inputValue}
                             onChange={(event) => handleInputChange(event.target.value)}
                         />
@@ -85,7 +86,7 @@ export const Todo = () => {
                     {
                         task.map((curTask, index) => {
                             return <li key={index} className="todo-item">
-                                <span><BsArrowUpRightCircleFill /> {curTask}</span>
+                                <span><BsArrowUpRightCircleFill style={{color: "#4983ff", fontSize: "20px"}} /> {curTask}</span>
                                 <button className="check-btn">
                                     <MdCheck />
                                 </button>
