@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { MdCheck, MdDeleteForever } from "react-icons/md";
+
 
 export const Todo = () => {
     const [inputValue, setInputValue] = useState("");
@@ -52,6 +54,24 @@ export const Todo = () => {
                         </button>
                     </div>
                 </form>
+            </section>
+
+            <section className="myUnOrList">
+                <ul>
+                    {
+                        task.map((curTask, index) => {
+                            return <li key={index} className="todo-item">
+                                <span>{curTask}</span>
+                                <button className="check-btn">
+                                    <MdCheck />
+                                </button>
+                                <button>
+                                    <MdDeleteForever className="delete-btn"/>
+                                </button>
+                            </li>
+                        })
+                    }
+                </ul>
             </section>
         </section>
     );
