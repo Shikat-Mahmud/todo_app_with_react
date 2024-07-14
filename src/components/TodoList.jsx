@@ -1,9 +1,9 @@
 import { MdCheck, MdDeleteForever } from "react-icons/md";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 
-export const TodoList = ({ key, data, onHandleItemDelete }) => {
+export const TodoList = ({ data, onHandleItemDelete }) => {
     return (
-        <li key={key} className="todo-item">
+        <li className="todo-item">
             <span><BsArrowUpRightCircleFill style={{ color: "#4983ff", fontSize: "20px" }} /> {data}</span>
             <button className="check-btn">
                 <MdCheck />

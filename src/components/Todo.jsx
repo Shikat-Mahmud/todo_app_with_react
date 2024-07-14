@@ -9,21 +9,23 @@ export const Todo = () => {
     const [task, setTask] = useState([]);
 
     const handleFormSubmit = (inputValue) => {
+        const { id, content, checked } = inputValue;
 
-        // do not add null value
-        if (!inputValue) return;
+        // to check if the input field is empty or not
+        if (!inputValue.content) return;
 
-        // do not add duplicate value
-        if (task.includes(inputValue)) return;
+        // to check if the data is already existing or not
+        const ifTodoContentMatched = task.find((curTask) => curTask.content === content );
+        if (ifTodoContentMatched) return;
 
         // add values to the array
-        setTask((newTask) => [...newTask, inputValue]);
+        setTask((newTask) => [...newTask, { id, content, checked }]);
     };
 
 
     // todo single task delete
     const handleItemDelete = (value) => {
-        const updatedTask = task.filter((item) => item !== value);
+        const updatedTask = task.filter((item) => item.content !== value);
         setTask(updatedTask);
     }
 
@@ -42,11 +44,11 @@ export const Todo = () => {
             <section className="myUnOrdList">
                 <ul>
                     {
-                        task.map((curTask, index) => {
+                        task.map((curTask) => {
                             return (
                                 <TodoList
-                                    Key={index}
-                                    data={curTask}
+                                    Key={curTask.id}
+                                    data={curTask.content}
                                     onHandleItemDelete={handleItemDelete}
                                 />
                             );

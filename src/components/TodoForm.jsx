@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export const TodoForm = ({ onAddToDo }) => {
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState({});
 
     const handleInputChange = (value) => {
-        setInputValue(value);
+        setInputValue({ id: value, content: value, checked: false });
     };
 
     const handleFormSubmit = (event) => {
@@ -13,7 +13,7 @@ export const TodoForm = ({ onAddToDo }) => {
         onAddToDo(inputValue);
 
         // clear input after adding a task
-        setInputValue("");
+        setInputValue({ id: "", content: "", checked: false });
     };
 
     return (
@@ -26,7 +26,7 @@ export const TodoForm = ({ onAddToDo }) => {
                         className="todo-input"
                         autoComplete="off"
                         placeholder="Task Name"
-                        value={inputValue}
+                        value={inputValue.content}
                         onChange={(event) => handleInputChange(event.target.value)}
                     />
                 </div>
