@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { MdCheck, MdDeleteForever } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { IoMdTime } from "react-icons/io";
+import { MdCheck, MdDeleteForever, MdOutlineDateRange } from "react-icons/md";
 
 
 export const Todo = () => {
@@ -29,12 +30,34 @@ export const Todo = () => {
         setInputValue("");
     };
 
-    console.log(task);
+    // todo date and time
+    // const [dateTime, setDateTime] = useState("");
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    
+    // used useEffect to prevent memory leakage
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString();
+            const formattedTime = now.toLocaleTimeString();
+            
+            // setDateTime(`Date: ${formattedDate} Time: ${formattedTime}`)
+            setDate(formattedDate)
+            setTime(formattedTime)
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <section className="todo-container">
             <header>
                 <h1>Todo List</h1>
+                <div style={{display: "flex",alignItems: "center", justifyContent: "center", gap: "20px", backgroundColor: "#fff", padding: "6px", borderRadius: "8px", color: "#000"}}>
+                    <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><MdOutlineDateRange /> {date}</h2>
+                    <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><IoMdTime /> {time}</h2>
+                </div>
             </header>
             <section className="form">
                 <form onSubmit={handleFormSubmit}>
