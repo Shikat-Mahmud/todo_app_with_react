@@ -56,7 +56,7 @@ export const Todo = () => {
                 </form>
             </section>
 
-            <section className="myUnOrList">
+            <section>
                 <ul>
                     {
                         task.map((curTask, index) => {
