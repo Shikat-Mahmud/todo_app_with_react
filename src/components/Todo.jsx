@@ -38,6 +38,11 @@ export const Todo = () => {
         setTask(updatedTask);
     }
 
+    // todo clear all
+    const handleClearAll = () => {
+        setTask([]);
+    }
+
 
     // todo date and time
     // const [dateTime, setDateTime] = useState("");
@@ -106,6 +111,17 @@ export const Todo = () => {
                     }
                 </ul>
             </section>
+            {task.length > 0 && (
+                <section className="clear-btn">
+                    <button
+                        type="button"
+                        style={{ background: "none", color: "#fff" }}
+                        onClick={handleClearAll}
+                    >
+                        Clear All
+                    </button>
+                </section>
+            )}
         </section>
     );
 };
