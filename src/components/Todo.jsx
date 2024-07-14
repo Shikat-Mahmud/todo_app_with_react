@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
-import { MdCheck, MdDeleteForever, MdOutlineDateRange } from "react-icons/md";
+import { MdOutlineDateRange } from "react-icons/md";
 import { TodoForm } from "./TodoForm";
+import { TodoList } from "./TodoList";
 
 
 export const Todo = () => {
@@ -62,25 +62,24 @@ export const Todo = () => {
                 </div>
             </header>
 
-            <TodoForm onAddToDo={handleFormSubmit}/>
+            <TodoForm onAddToDo={handleFormSubmit} />
 
             <section className="myUnOrdList">
                 <ul>
                     {
                         task.map((curTask, index) => {
-                            return <li key={index} className="todo-item">
-                                <span><BsArrowUpRightCircleFill style={{ color: "#4983ff", fontSize: "20px" }} /> {curTask}</span>
-                                <button className="check-btn">
-                                    <MdCheck />
-                                </button>
-                                <button className="delete-btn" onClick={() => handleItemDelete(curTask)}>
-                                    <MdDeleteForever />
-                                </button>
-                            </li>
+                            return (
+                                <TodoList
+                                    Key={index}
+                                    data={curTask}
+                                    onHandleItemDelete={handleItemDelete}
+                                />
+                            );
                         })
                     }
                 </ul>
             </section>
+
             {task.length > 0 && (
                 <section className="clear-btn">
                     <button
