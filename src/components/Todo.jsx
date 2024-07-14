@@ -31,18 +31,26 @@ export const Todo = () => {
         setInputValue("");
     };
 
+
+    // todo single task delete
+    const handleItemDelete = (value) => {
+        const updatedTask = task.filter((item) => item !== value);
+        setTask(updatedTask);
+    }
+
+
     // todo date and time
     // const [dateTime, setDateTime] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
-    
+
     // used useEffect to prevent memory leakage
     useEffect(() => {
         const interval = setInterval(() => {
             const now = new Date();
             const formattedDate = now.toLocaleDateString();
             const formattedTime = now.toLocaleTimeString();
-            
+
             // setDateTime(`Date: ${formattedDate} Time: ${formattedTime}`)
             setDate(formattedDate)
             setTime(formattedTime)
@@ -55,9 +63,9 @@ export const Todo = () => {
         <section className="todo-container">
             <header>
                 <h1>Todo List</h1>
-                <div style={{display: "flex",alignItems: "center", justifyContent: "center", gap: "20px", backgroundColor: "#fff", padding: "6px 20px", borderRadius: "8px", color: "#000"}}>
-                    <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><MdOutlineDateRange /> {date}</h2>
-                    <h2 style={{display: "flex", alignItems: "center", gap: "5px"}}><IoMdTime /> {time}</h2>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", backgroundColor: "#fff", padding: "6px 20px", borderRadius: "8px", color: "#000" }}>
+                    <h2 style={{ display: "flex", alignItems: "center", gap: "5px" }}><MdOutlineDateRange /> {date}</h2>
+                    <h2 style={{ display: "flex", alignItems: "center", gap: "5px" }}><IoMdTime /> {time}</h2>
                 </div>
             </header>
             <section className="form">
@@ -67,7 +75,7 @@ export const Todo = () => {
                             style={{ color: "#000" }}
                             type="text"
                             className="todo-input"
-                            autoComplete="off" 
+                            autoComplete="off"
                             placeholder="Task Name"
                             value={inputValue}
                             onChange={(event) => handleInputChange(event.target.value)}
@@ -86,11 +94,11 @@ export const Todo = () => {
                     {
                         task.map((curTask, index) => {
                             return <li key={index} className="todo-item">
-                                <span><BsArrowUpRightCircleFill style={{color: "#4983ff", fontSize: "20px"}} /> {curTask}</span>
+                                <span><BsArrowUpRightCircleFill style={{ color: "#4983ff", fontSize: "20px" }} /> {curTask}</span>
                                 <button className="check-btn">
                                     <MdCheck />
                                 </button>
-                                <button className="delete-btn">
+                                <button className="delete-btn" onClick={() => handleItemDelete(curTask)}>
                                     <MdDeleteForever />
                                 </button>
                             </li>
