@@ -20,7 +20,7 @@ export const Todo = () => {
         if (ifTodoContentMatched) return;
 
         // add values to the array
-        setTask((newTask) => [...newTask, { id, content, checked }]);
+        setTask((prevTask) => [...prevTask, { id, content, checked }]);
     };
 
     // store todo data in local storage
