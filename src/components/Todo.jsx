@@ -3,10 +3,12 @@ import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoTime } from "./TodoTime";
 import { TodoClearAll } from "./TodoClearAll";
+import { stringify } from "postcss";
+import { getLocalStorageTodoData, setLocalStorageTodoData } from "./TodoLocalStorage";
 
 
 export const Todo = () => {
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState(() => getLocalStorageTodoData());
 
     const handleFormSubmit = (inputValue) => {
         const { id, content, checked } = inputValue;
@@ -22,6 +24,8 @@ export const Todo = () => {
         setTask((newTask) => [...newTask, { id, content, checked }]);
     };
 
+    // store todo data in local storage
+    setLocalStorageTodoData(task);
 
     // todo single task delete
     const handleItemDelete = (value) => {
