@@ -15,7 +15,7 @@ export const Todo = () => {
         if (!inputValue.content) return;
 
         // to check if the data is already existing or not
-        const ifTodoContentMatched = task.find((curTask) => curTask.content === content );
+        const ifTodoContentMatched = task.find((curTask) => curTask.content === content);
         if (ifTodoContentMatched) return;
 
         // add values to the array
@@ -27,6 +27,20 @@ export const Todo = () => {
     const handleItemDelete = (value) => {
         const updatedTask = task.filter((item) => item.content !== value);
         setTask(updatedTask);
+    }
+
+    const handleCheckedTodo = (content) => {
+
+        const updatedTask = task.map((curTask) => {
+            if (curTask.content === content) {
+                return { ...curTask, checked: !curTask.checked }
+            } else {
+                return curTask;
+            }
+        });
+
+        setTask(updatedTask);
+
     }
 
     // todo clear all
@@ -47,9 +61,11 @@ export const Todo = () => {
                         task.map((curTask) => {
                             return (
                                 <TodoList
-                                    Key={curTask.id}
+                                    key={curTask.id}
                                     data={curTask.content}
+                                    checked={curTask.checked}
                                     onHandleItemDelete={handleItemDelete}
+                                    onHandleCheckedTodo={handleCheckedTodo}
                                 />
                             );
                         })
