@@ -120,7 +120,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 1200px;
+    width: 100%;
   }
   
   .todo-list {
@@ -131,29 +131,28 @@
   }
   
   .todo-item {
-    margin: 1rem;
+    margin: 10px 0;
     font-size: 18px;
     color: #1c2833;
     border-radius: 30px;
     transition: background-color 200ms ease-in-out;
     background-color: #f2f3f4;
-    min-width: 35rem;
-    max-width: 40rem;
-    padding: 1rem;
+    width: 100%;
+    padding: 10px;
     display: flex;
     grid-template-columns: 1fr 0.3fr 0.3fr;
     justify-content: start;
-    gap: 1.6rem;
+    gap: 1rem;
     /*align-items: center;
       */ /*wrapsthelinks*/
     overflow-wrap: anywhere;
   }
   
   li span {
-    max-width: 20rem;
+    /* max-width: 20rem; */
     color: #1c2833;
     font-size: 18px;
-    min-width: 60%;
+    width: 150px;
   }
   
   .check-btn,
