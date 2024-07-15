@@ -3,7 +3,6 @@ import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoTime } from "./TodoTime";
 import { TodoClearAll } from "./TodoClearAll";
-import { stringify } from "postcss";
 import { getLocalStorageTodoData, setLocalStorageTodoData } from "./TodoLocalStorage";
 
 
